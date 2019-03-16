@@ -30,4 +30,7 @@ test:  ## TODO: Document
 	@NODE_ENV=test ./node_modules/.bin/mocha --recursive --reporter $(REPORTER) --timeout 3000
 
 unit:  ## TODO: Document
-	@NODE_ENV=test ./node_modules/.bin/mocha --recursive -R xunit > results.xml --timeout 3000
+	npm run test-unit
+
+unit-cover:  ## TODO: Document
+	find ./src -name "*.spec.js" -not -path "./node_modules/*" -print0 | xargs -0 npx istanbul cover _mocha --compilers js:@babel/register

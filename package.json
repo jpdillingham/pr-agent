@@ -7,7 +7,8 @@
     "build": "babel src -d dist --source-maps --copy-files",
     "debug": "node --nolazy --inspect-brk=9229 ./src/main.js",
     "start": "node ./dist/main.js",
-    "test": "make test"
+    "test-unit-old": "NODE_ENV=test mocha --recursive -R xunit > results.xml --timeout 3000",
+    "test-unit": "NODE_ENV=test mocha --compilers js:@babel/register '/**/*.spec.js'"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,12 @@
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
     "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "sinon": "^7.2.7"
   },
   "dependencies": {
     "axios": "^0.18.0"
